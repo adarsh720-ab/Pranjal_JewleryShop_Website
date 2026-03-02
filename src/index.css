@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FAFAF8;
+    color: #1A1A1A;
+    font-family: 'Raleway', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F5F5F0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C4A35A;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  /* ── Navigation ── */
+  .nav-link {
+    @apply font-heading text-xs tracking-widest uppercase text-stone transition-colors duration-300;
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: #C4A35A;
+    transition: width 0.35s ease;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    @apply text-gold;
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-3 px-10 py-4 bg-ink text-pearl font-heading text-xs tracking-widest uppercase transition-all duration-300;
+  }
+  .btn-primary:hover {
+    @apply bg-charcoal;
+    box-shadow: 0 0 0 1px #1A1A1A, 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-3 px-8 py-3 border border-charcoal text-charcoal font-heading text-xs tracking-widest uppercase transition-all duration-300;
+  }
+  .btn-outline:hover {
+    @apply bg-charcoal text-pearl;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center gap-2 px-8 py-3 bg-gold text-pearl font-heading text-xs tracking-widest uppercase transition-all duration-300;
+  }
+  .btn-gold:hover {
+    @apply bg-gold-dark;
+    box-shadow: 0 4px 20px rgba(196, 163, 90, 0.3);
+  }
+
+  /* ── Cards ── */
+  .product-card {
+    @apply bg-white border border-ivory transition-all duration-500 overflow-hidden;
+  }
+  .product-card:hover {
+    @apply border-warm;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.10);
+    transform: translateY(-4px);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 201, 184, 0.5);
+  }
+
+  /* ── Section Labels ── */
+  .section-eyebrow {
+    @apply font-heading text-gold text-xs tracking-[0.4em] uppercase;
+  }
+  .section-title {
+    @apply font-display text-ink;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.15;
+    font-weight: 300;
+  }
+  .section-subtitle {
+    @apply font-body text-stone text-sm leading-relaxed font-light;
+  }
+
+  /* ── Gold Shimmer Text ── */
+  .text-shimmer {
+    background: linear-gradient(135deg, #C4A35A 0%, #E8D5A0 40%, #C4A35A 60%, #A8893E 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* ── Gold Divider ── */
+  .gold-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C4A35A, transparent);
+  }
+
+  .gold-line-short {
+    width: 48px; height: 1px;
+    background: #C4A35A;
+  }
+
+  /* ── Form Inputs ── */
+  .form-input {
+    @apply w-full px-4 py-3 bg-snow border border-ivory text-ink font-body text-sm outline-none transition-all duration-300;
+  }
+  .form-input:focus {
+    @apply border-gold;
+    box-shadow: 0 0 0 3px rgba(196, 163, 90, 0.08);
+  }
+  .form-input::placeholder {
+    @apply text-warm;
+  }
+
+  .form-label {
+    @apply block font-heading text-stone text-xs tracking-widest uppercase mb-2;
+  }
+
+  .form-error {
+    @apply text-red-400 text-xs mt-1 font-body;
+  }
+
+  /* ── Admin ── */
+  .admin-nav-item {
+    @apply flex items-center gap-3 w-full px-6 py-3 text-stone font-body text-sm text-left transition-all duration-200;
+  }
+  .admin-nav-item:hover,
+  .admin-nav-item.active {
+    @apply text-ink bg-ivory;
+    border-left: 2px solid #C4A35A;
+  }
+
+  .stat-card {
+    @apply bg-white border border-ivory p-8;
+  }
+
+  .table-th {
+    @apply font-heading text-stone text-xs tracking-widest uppercase px-4 py-3 text-left border-b border-ivory font-normal;
+  }
+  .table-td {
+    @apply px-4 py-4 border-b border-snow font-body text-sm text-charcoal;
+  }
+
+  /* ── Badge ── */
+  .badge-available {
+    @apply inline-block px-3 py-1 text-xs font-heading tracking-wider;
+    background: rgba(155, 174, 154, 0.15);
+    color: #5a8a59;
+    border: 1px solid rgba(155,174,154,0.3);
+  }
+  .badge-out {
+    @apply inline-block px-3 py-1 text-xs font-heading tracking-wider;
+    background: rgba(220, 150, 150, 0.12);
+    color: #c06060;
+    border: 1px solid rgba(220,150,150,0.25);
+  }
+  .badge-new {
+    @apply inline-block px-3 py-1 text-xs font-heading tracking-wider bg-gold text-white;
+  }
+  .badge-featured {
+    @apply inline-block px-3 py-1 text-xs font-heading tracking-wider;
+    background: rgba(196,163,90,0.1);
+    color: #C4A35A;
+    border: 1px solid rgba(196,163,90,0.3);
+  }
+
+  /* ── Skeleton Loader ── */
+  .skeleton {
+    background: linear-gradient(90deg, #F5F5F0 25%, #EDE8E0 50%, #F5F5F0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+
+  /* ── Category Card ── */
+  .category-card {
+    @apply relative overflow-hidden transition-all duration-500;
+  }
+  .category-card:hover img {
+    transform: scale(1.06);
+    filter: brightness(0.75);
+  }
+  .category-card img {
+    transition: all 0.6s ease;
+    filter: brightness(0.85);
+  }
+
+  /* ── Horizontal Scroll ── */
+  .h-scroll-container {
+    @apply overflow-x-auto pb-4;
+    scrollbar-width: thin;
+    scrollbar-color: #C4A35A #F5F5F0;
+  }
+  .h-scroll-container::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  /* ── Upload Zone ── */
+  .upload-zone {
+    @apply border-2 border-dashed border-ivory p-10 text-center transition-all duration-300;
+  }
+  .upload-zone:hover {
+    @apply border-gold bg-snow;
+  }
+}
+
+/* ── Animations ── */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* ── Swiper overrides ── */
+.swiper-pagination-bullet {
+  background: #D4C9B8 !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+  background: #C4A35A !important;
+  width: 24px !important;
+  border-radius: 2px !important;
+}
