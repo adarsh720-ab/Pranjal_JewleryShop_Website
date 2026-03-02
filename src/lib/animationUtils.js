@@ -1,7 +1,5 @@
 /**
  * Mobile-friendly animation helpers.
- * - Smaller y-offsets so elements don't start off-screen on small viewports
- * - viewport amount: 0.1 so animations fire when just 10% is visible
  */
 
 export const fadeUp = {
